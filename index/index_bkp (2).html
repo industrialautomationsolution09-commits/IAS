@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Automation Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #0a192f;
+            --accent-cyan: #00d4ff;
+            --accent-orange: #ff8c00;
+            --bg-light: #f4f7f9;
+            --white: #ffffff;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-light); color: var(--primary-navy); overflow-x: hidden; }
+
+        /* --- NAVIGATION --- */
+        nav { 
+            background: var(--primary-navy); padding: 0 5%; display: flex; justify-content: space-between; 
+            align-items: center; position: fixed; width: 100%; top: 0; z-index: 2000; height: 80px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .brand-container { display: flex; align-items: center; gap: 12px; }
+        .header-logo { height: 55px; width: auto; }
+        .logo-text { color: white; font-weight: bold; border-left: 4px solid var(--accent-orange); padding-left: 10px; font-family: 'Montserrat'; font-size: 1.1rem; }
+        
+        .nav-tabs { display: flex; height: 100%; }
+        .tab-link { 
+            color: #a8b2d1; text-decoration: none; padding: 0 15px; display: flex; align-items: center; 
+            cursor: pointer; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border-bottom: 3px solid transparent;
+        }
+        .tab-link.active { color: var(--white); border-bottom: 3px solid var(--accent-orange); background: rgba(255,255,255,0.05); }
+
+        /* --- HOME PAGE EXTRAS --- */
+        .marquee-container { background: #fff; overflow: hidden; padding: 20px 0; border-bottom: 2px solid #eee; }
+        .marquee-content { display: flex; gap: 50px; animation: scrollLeft 20s linear infinite; width: max-content; }
+        .marquee-content img { height: 80px; filter: grayscale(100%); opacity: 0.6; transition: 0.3s; }
+        .marquee-content img:hover { filter: grayscale(0%); opacity: 1; }
+        @keyframes scrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; padding: 40px 10%; background: var(--primary-navy); color: white; text-align: center; }
+        .stat-item h2 { color: var(--accent-orange); font-size: 2.5rem; }
+        .stat-item p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .who-we-are { padding: 60px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+
+        /* --- SOLUTIONS (SERVICES) --- */
+        .services-menu { display: flex; gap: 8px; margin-bottom: 30px; flex-wrap: wrap; }
+        .service-btn { padding: 10px 18px; background: white; border: 1px solid #ddd; cursor: pointer; border-radius: 4px; font-weight: 600; font-size: 0.85rem; }
+        .service-btn.active { background: var(--accent-orange); color: white; border-color: var(--accent-orange); }
+
+        .service-detail-card { display: none; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); grid-template-columns: 1fr 1.2fr; gap: 30px; align-items: start; }
+        .service-detail-card.active { display: grid; }
+        .service-detail-card img { width: 100%; border-radius: 8px; }
+
+        /* --- CONTENT CONTAINERS --- */
+        .content-container { margin-top: 80px; }
+        .tab-content { display: none; padding: 40px 0; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- HERO --- */
+        .hero { 
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), url('assets/images/hero.jpg');
+            background-size: cover; height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white;
+        }
+
+        @media (max-width: 768px) {
+            .who-we-are, .service-detail-card { grid-template-columns: 1fr; }
+            nav { height: auto; flex-direction: column; padding: 10px; }
+            .nav-tabs { flex-wrap: wrap; justify-content: center; }
+            .content-container { margin-top: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand-container">
+            <img src="assets/logos/company_logo2.png" alt="IAS Logo" class="header-logo">
+            <div class="logo-text">INDUSTRIAL AUTOMATION SOLUTION</div>
+        </div>
+        <div class="nav-tabs">
+            <div class="tab-link active" onclick="openTab(event, 'home')">Home</div>
+            <div class="tab-link" onclick="openTab(event, 'about')">About</div>
+            <div class="tab-link" onclick="openTab(event, 'solutions')">Industrial Solutions</div>
+            <div class="tab-link" onclick="openTab(event, 'portfolio')">Portfolio</div>
+            <div class="tab-link" onclick="openTab(event, 'customers')">Key Customers</div>
+            <div class="tab-link" onclick="openTab(event, 'contact')">Contact</div>
+        </div>
+    </nav>
+
+    <div class="content-container">
+        
+        <div id="home" class="tab-content active">
+            <div class="hero">
+                <h1>Smart <span>Automation</span>.<br>Reliable <span>Performance</span>.</h1>
+            </div>
+
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <img src="assets/images/client1.png" alt="Logo">
+                    <img src="assets/images/client2.png" alt="Logo">
+                    <img src="assets/images/client3.png" alt="Logo">
+                    <img src="assets/images/client4.png" alt="Logo">
+                    <img src="assets/images/client1.png" alt="Logo">
+                    <img src="assets/images/client2.png" alt="Logo">
+                </div>
+            </div>
+
+            <section class="who-we-are">
+                <div>
+                    <h2 style="border-left: 5px solid var(--accent-orange); padding-left: 15px; margin-bottom: 20px;">Who We Are</h2>
+                    <p style="line-height: 1.8; color: #444;">We are pioneers in industrial control systems, dedicated to transforming manufacturing landscapes through intelligent automation. With nearly two decades of expertise, we bridge the gap between traditional hardware and modern software solutions.</p>
+                </div>
+                <div class="stats-grid" style="padding: 20px; border-radius: 10px;">
+                    <div class="stat-item"><h2>18+</h2><p>Years Exp</p></div>
+                    <div class="stat-item"><h2>10+</h2><p>Experts</p></div>
+                    <div class="stat-item"><h2>40+</h2><p>Projects</p></div>
+                    <div class="stat-item"><h2>15+</h2><p>Domains</p></div>
+                </div>
+            </section>
+        </div>
+
+        <div id="about" class="tab-content">
+            <div class="who-we-are">
+                <img src="assets/images/Our Approach.jpg" alt="About IAS" style="width: 100%; border-radius: 10px;">
+                <div>
+                    <h2 style="border-left: 5px solid var(--accent-orange); padding-left: 15px; margin-bottom: 20px;">Our Journey</h2>
+                    <p style="line-height: 1.8;">Founded on the principles of engineering excellence, Industrial Automation Solution has grown into a trusted partner for global manufacturers. Our approach combines rigorous technical standards with innovative problem-solving.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="solutions" class="tab-content" style="padding: 40px 10%;">
+            <h2 style="margin-bottom: 30px;">Our Core Solutions</h2>
+            
+            <div class="services-menu">
+                <button class="service-btn active" onclick="openService(event, 'machine-auto')">Machine Automation</button>
+                <button class="service-btn" onclick="openService(event, 'plant-auto')">Plant Automation</button>
+                <button class="service-btn" onclick="openService(event, 'process-auto')">Process Automation</button>
+                <button class="service-btn" onclick="openService(event, 'panels')">Control Panels</button>
+                <button class="service-btn" onclick="openService(event, 'repair')">Repair & Service</button>
+                <button class="service-btn" onclick="openService(event, 'amc')">Support & AMC</button>
+            </div>
+
+            <div id="machine-auto" class="service-detail-card active">
+                <img src="assets/images/machine_auto.jpg" alt="Machine Auto">
+                <div class="service-text">
+                    <h3>Machine Automation</h3>
+                    <p>High-speed logic and motion control for standalone machinery. We specialize in SPM (Special Purpose Machines) logic using high-end PLCs and Servos for precision manufacturing.</p>
+                </div>
+            </div>
+
+            <div id="plant-auto" class="service-detail-card">
+                <img src="assets/images/plant_auto.jpg" alt="Plant Auto">
+                <div class="service-text">
+                    <h3>Plant & Factory Automation</h3>
+                    <p>End-to-end integration of factory floors. We connect multiple production lines to a centralized control system, allowing for seamless data flow and synchronization.</p>
+                </div>
+            </div>
+
+            <div id="process-auto" class="service-detail-card">
+                <img src="assets/images/process_auto.jpg" alt="Process Auto">
+                <div class="service-text">
+                    <h3>Process Automation</h3>
+                    <p>Specialized solutions for continuous process industries like Chemical, Pharma, and Water Treatment. We handle PID loops, flow control, and safety instrumented systems (SIS).</p>
+                </div>
+            </div>
+
+            <div id="panels" class="service-detail-card">
+                <img src="assets/images/panel_build.jpg" alt="Panels">
+                <div class="service-text">
+                    <h3>Electrical Control Panels</h3>
+                    <p>Custom design and fabrication of CP, MCC, PCC, and VFD panels. All panels are built to international standards with rigorous testing before dispatch.</p>
+                </div>
+            </div>
+
+            <div id="repair" class="service-detail-card">
+                <img src="assets/images/repair.jpg" alt="Repair">
+                <div class="service-text">
+                    <h3>Component Repair</h3>
+                    <p>Component-level repair services for PLCs, HMIs, and VFDs. We help reduce costs by reviving your existing hardware with certified testing.</p>
+                </div>
+            </div>
+
+            <div id="amc" class="service-detail-card">
+                <img src="assets/images/support.jpg" alt="Support">
+                <div class="service-text">
+                    <h3>24/7 Support & AMC</h3>
+                    <p>Annual Maintenance Contracts (AMC) and emergency on-site support to ensure zero production loss. We are your long-term reliability partners.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="portfolio" class="tab-content" style="padding: 40px 10%;"><h2>Project Gallery</h2></div>
+        <div id="customers" class="tab-content" style="padding: 40px 10%;"><h2>Trusted by Industry Leaders</h2></div>
+        <div id="contact" class="tab-content" style="padding: 40px 10%;"><h2>Get In Touch</h2></div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Industrial Automation Solution. Engineered for Excellence.</p>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className += " active";
+            window.scrollTo(0,0);
+        }
+
+        function openService(evt, serviceId) {
+            var i, detailcards, servicebtns;
+            detailcards = document.getElementsByClassName("service-detail-card");
+            for (i = 0; i < detailcards.length; i++) {
+                detailcards[i].classList.remove("active");
+            }
+            servicebtns = document.getElementsByClassName("service-btn");
+            for (i = 0; i < servicebtns.length; i++) {
+                servicebtns[i].classList.remove("active");
+            }
+            document.getElementById(serviceId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
