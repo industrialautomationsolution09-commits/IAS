@@ -471,7 +471,66 @@
     }
 </style>
 
-<div id="contact" class="tab-content" style="padding: 100px 10%; display: none; font-family: 'Montserrat', sans-serif;">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    /* Professional Contact Styling */
+    .contact-grid { 
+        display: flex; 
+        justify-content: center; 
+        align-items: flex-start; 
+        gap: 50px; 
+    }
+    .contact-info-box { 
+        max-width: 650px; 
+        width: 100%; 
+        text-align: left; 
+    }
+    .contact-item { 
+        display: flex; 
+        align-items: center; 
+        margin-bottom: 25px; 
+        gap: 20px; 
+    }
+    .contact-icon { 
+        color: var(--accent-orange); 
+        font-size: 1.8rem; 
+        width: 40px; 
+        text-align: center; 
+    }
+    /* Fixed: Removes default blue color and underline */
+    .contact-link { 
+        color: var(--primary-navy) !important; 
+        text-decoration: none !important; 
+        transition: 0.3s; 
+        font-size: 1.1rem; 
+        font-weight: 500;
+    }
+    .contact-link:hover { 
+        color: var(--accent-orange) !important; 
+    }
+
+    /* Mobile Responsive Fixes */
+    @media screen and (max-width: 768px) {
+        .contact-tab-content { padding: 60px 20px !important; }
+        .contact-info-box { text-align: center; }
+        .contact-item { 
+            flex-direction: column; 
+            gap: 8px; 
+            margin-bottom: 30px; 
+        }
+        .contact-info-box h2 { 
+            font-size: 2rem !important; 
+            border-left: none !important; 
+            border-bottom: 4px solid var(--accent-orange); 
+            display: inline-block; 
+            padding-bottom: 10px; 
+            margin-bottom: 25px !important;
+        }
+    }
+</style>
+
+<div id="contact" class="tab-content contact-tab-content" style="padding: 100px 10%; display: none; font-family: 'Montserrat', sans-serif;">
     <div class="contact-grid">
         <div class="contact-info-box">
             <h2 style="border-left: 5px solid var(--accent-orange); padding-left: 15px; font-weight: 700; color: var(--primary-navy); font-size: 2.5rem; margin-bottom: 30px;">
@@ -494,7 +553,7 @@
                 <i class="fas fa-phone-alt contact-icon"></i>
                 <div>
                     <strong style="display: block; font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">Phone / Mobile</strong>
-                    <a href="tel:+910000000000" class="contact-link">+91-7499708520</a>
+                    <a href="tel:+917499708520" class="contact-link">+91-7499708520</a>
                 </div>
             </div>
 
@@ -502,14 +561,12 @@
                 <i class="fas fa-location-dot contact-icon"></i>
                 <div>
                     <strong style="display: block; font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px;">Office Location</strong>
-                    <span style="font-size: 1.1rem;">Bhosari, Pune, Maharashtra, India</span>
+                    <span style="font-size: 1.1rem; color: var(--primary-navy); font-weight: 500;">Bhosari, Pune, Maharashtra, India</span>
                 </div>
             </div>
         </div>
-
-        </div>
+    </div>
 </div>
-
     <footer>
         <p style="text-align: center; padding: 20px; background: var(--primary-navy); color: white;">&copy; 2026 Industrial Automation Solution. Engineered for Excellence.</p>
     </footer>
@@ -551,4 +608,5 @@
 </body>
 
 </html>
+
 
